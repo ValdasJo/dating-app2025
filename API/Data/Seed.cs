@@ -11,7 +11,7 @@ public class Seed
 {
     public static async Task SeedUsers(AppDbContext context)
     {
-        if(await context.Users.AnyAsync()) return;
+        if (await context.Users.AnyAsync()) return;
         
         var memberData = await File.ReadAllTextAsync("Data/UserSeedData.json");
         var members = JsonSerializer.Deserialize<List<SeedUserDto>>(memberData);

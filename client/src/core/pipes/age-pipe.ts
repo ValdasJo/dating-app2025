@@ -12,7 +12,7 @@ export class AgePipe implements PipeTransform {
     let age = today.getFullYear() - dateOfbirth.getFullYear();
     const monthDiff = today.getMonth() - dateOfbirth.getMonth();
 
-    if(monthDiff < 0 || (monthDiff === 0 && today.getDate() < dateOfbirth.getDate())) {
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dateOfbirth.getDate())) {
       age--;
     }
 

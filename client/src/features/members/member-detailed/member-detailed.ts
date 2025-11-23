@@ -10,7 +10,7 @@ import { MemberService } from '../../../core/services/member-service';
   selector: 'app-member-detailed',
   imports: [RouterLink, RouterLinkActive, RouterOutlet, AgePipe],
   templateUrl: './member-detailed.html',
-  styleUrl: './member-detailed.css',
+  styleUrl: './member-detailed.css'
 })
 export class MemberDetailed implements OnInit {
   private route = inject(ActivatedRoute);
@@ -23,7 +23,7 @@ export class MemberDetailed implements OnInit {
   })
 
   ngOnInit(): void {
-    this.title.set(this.route.firstChild?.snapshot?.title)
+    this.title.set(this.route.firstChild?.snapshot?.title);
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)

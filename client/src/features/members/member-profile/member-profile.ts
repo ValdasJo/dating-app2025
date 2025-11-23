@@ -10,7 +10,7 @@ import { AccountService } from '../../../core/services/account-service';
   selector: 'app-member-profile',
   imports: [DatePipe, FormsModule],
   templateUrl: './member-profile.html',
-  styleUrl: './member-profile.css',
+  styleUrl: './member-profile.css'
 })
 export class MemberProfile implements OnInit, OnDestroy {
   @ViewChild('editForm') editForm?: NgForm;
@@ -27,7 +27,7 @@ export class MemberProfile implements OnInit, OnDestroy {
     description: '',
     city: '',
     country: ''
-  };
+  }
 
   ngOnInit(): void {
     this.editableMember = {
@@ -40,7 +40,7 @@ export class MemberProfile implements OnInit, OnDestroy {
 
   updateProfile() {
     if (!this.memberService.member()) return;
-    const updatedMember = { ...this.memberService.member(), ...this.editableMember };
+    const updatedMember = { ...this.memberService.member(), ...this.editableMember }
     this.memberService.updateMember(this.editableMember).subscribe({
       next: () => {
         const currentUser = this.accountService.currentUser();

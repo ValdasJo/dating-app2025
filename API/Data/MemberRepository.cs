@@ -16,6 +16,7 @@ public class MemberRepository(AppDbContext context) : IMemberRepository
     {
         return await context.Members
             .Include(x => x.User)
+            .Include(x => x.Photos)
             .SingleOrDefaultAsync(x => x.Id == id);
     }
 
@@ -24,7 +25,7 @@ public class MemberRepository(AppDbContext context) : IMemberRepository
         return await context.Members.ToListAsync();
     }
 
-    public async Task<IReadOnlyList<Photo>> GetPhotosForMembersAsync(string memberId)
+    public async Task<IReadOnlyList<Photo>> GetPhotosForMemberAsync(string memberId)
     {
         return await context.Members
         .Where(x => x.Id == memberId)

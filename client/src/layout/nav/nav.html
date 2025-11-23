@@ -12,12 +12,13 @@
         </div>
         <nav class="flex gap-3 my-2 uppercase text-lg text-white">
             @if (accountService.currentUser()) {
-            <a routerLink="/members" routerLinkActive="text-accent"
-                [routerLinkActiveOptions]="{exact: true}">Matches</a>
+            <a routerLink="/members" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact: true}">
+                Matches
+            </a>
             <a routerLink="/lists" routerLinkActive="text-accent">Lists</a>
             <a routerLink="/messages" routerLinkActive="text-accent">Messages</a>
             }
-            <a routerLink="/errors" routerLinkActive="text-accent">Errors-test</a>
+            <a routerLink="/errors" routerLinkActive="text-accent">Errors</a>
         </nav>
 
         @if (busyService.busyRequestCount() > 0) {
@@ -36,9 +37,9 @@
                     <span>{{selectedTheme()}}</span>
 
                 </button>
-                <ul tabindex="1" class="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm">
+                <ul tabindex="1" class="dropdown-content z-50 menu bg-base-100 rounded-box w-52 p-2 shadow-sm">
                     @for (theme of themes; track $index) {
-                        <li (click)="handleSelectedTheme(theme)">
+                        <li (click)="handleSelectTheme(theme)">
                             <a>{{theme}}</a>
                         </li>
                     }
@@ -51,7 +52,7 @@
                     <img [src]="user?.imageUrl || '/user.png'" alt="user avatar" class="w-10 h-10 rounded-full">
                     <span>{{user.displayName}}</span>
                 </div>
-                <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                     <li><a routerLink="/members/{{user.id}}">Edit profile</a></li>
                     <li><a (click)="logout()">Logout</a></li>
                 </ul>

@@ -14,7 +14,8 @@ public class TokenService(IConfiguration config) : ITokenService
     {
         var tokenKey = config["TokenKey"] ?? throw new Exception("Cannot get token key");
         
-        if (tokenKey.Length < 64) throw new Exception("Your token key must be greater or equal to 64 characters");
+        if (tokenKey.Length < 64) 
+            throw new Exception("Your token key must be greater or equal to 64 characters");
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
 

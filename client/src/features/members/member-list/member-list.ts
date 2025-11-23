@@ -9,7 +9,7 @@ import { MemberCard } from "../member-card/member-card";
   selector: 'app-member-list',
   imports: [AsyncPipe, MemberCard],
   templateUrl: './member-list.html',
-  styleUrl: './member-list.css',
+  styleUrl: './member-list.css'
 })
 export class MemberList {
   private memberService = inject(MemberService);

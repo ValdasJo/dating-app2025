@@ -6,7 +6,7 @@ import { ApiError } from '../../../types/error';
   selector: 'app-server-error',
   imports: [],
   templateUrl: './server-error.html',
-  styleUrl: './server-error.css',
+  styleUrl: './server-error.css'
 })
 export class ServerError {
   protected error: ApiError;
@@ -14,7 +14,7 @@ export class ServerError {
   protected showDetails = false;
 
   constructor() {
-    const navigation = this.router.currentNavigation();
+    const navigation = this.router.getCurrentNavigation();
     this.error = navigation?.extras?.state?.['error']
   }
 
