@@ -2,9 +2,13 @@
     <div class="flex justify-between items-center">
         <div class="tabs tabs-border tabs-lg text-primary">
             @for (tab of tabs; track $index) {
-            <button class="tab" [hidden]="tab.value === 'roles' 
+            <button 
+                class="tab" 
+                [hidden]="tab.value === 'roles' 
                         && !accountService.currentUser()?.roles?.includes('Admin')"
-                [class.tab-active]="activeTab === tab.value" (click)="setTab(tab.value)">
+                [class.tab-active]="activeTab === tab.value" 
+                    (click)="setTab(tab.value)"
+            >
                 {{tab.label}}
             </button>
             }

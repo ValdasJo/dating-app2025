@@ -21,7 +21,7 @@ export class Lists implements OnInit {
   tabs = [
     {label: 'Liked', value: 'liked'},
     {label: 'Liked me', value: 'likedBy'},
-    {label: 'Mutual', value: 'mutual'}
+    {label: 'Mutual', value: 'mutual'},
   ]
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class Lists implements OnInit {
   }
 
   setPredicate(predicate: string) {
-    if (this.predicate != predicate) {
+    if (this.predicate !== predicate) {
       this.predicate = predicate;
       this.pageNumber = 1;
       this.loadLikes();
@@ -42,7 +42,7 @@ export class Lists implements OnInit {
     })
   }
 
-  onPageChange(event: {pageNumber: number, pageSize: number}) {
+  onPageChange(event: { pageNumber: number, pageSize: number }) {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageNumber;
     this.loadLikes();

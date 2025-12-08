@@ -51,7 +51,7 @@ export class MemberPhotos implements OnInit {
   setMainPhoto(photo: Photo) {
     this.memberService.setMainPhoto(photo).subscribe({
       next: () => {
-        this.setMainLocalPhoto(photo);
+        this.setMainLocalPhoto(photo)
       }
     })
   }

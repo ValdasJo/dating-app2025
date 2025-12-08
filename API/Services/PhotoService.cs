@@ -40,7 +40,6 @@ public class PhotoService : IPhotoService
                 Folder = "da-ang20"
             };
             uploadResult = await _cloudinary.UploadAsync(uploadParams);
-
         }
         
         return uploadResult;

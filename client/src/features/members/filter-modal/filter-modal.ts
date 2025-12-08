@@ -12,10 +12,10 @@ export class FilterModal {
   @ViewChild('filterModal') modalRef!: ElementRef<HTMLDialogElement>;
   closeModal = output();
   submitData = output<MemberParams>();
-  memberParams = model(new MemberParams());
+  memberParams = model(new MemberParams())
 
   constructor() {
-    const filters = localStorage.getItem('filters')
+    const filters = localStorage.getItem('filters');
     if (filters) {
       this.memberParams.set(JSON.parse(filters));
     }

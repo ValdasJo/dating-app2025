@@ -23,11 +23,10 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 builder.Services.AddCors();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPhotoService, PhotoService>();
-builder.Services.AddScoped<IMemberRepository, MemberRepository>();
-builder.Services.AddScoped<IMessageRepository, MessageRepository>();
-builder.Services.AddScoped<ILikesRepository, LikesRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<LogUserActivity>();
-builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+builder.Services.Configure<CloudinarySettings>(builder.Configuration
+    .GetSection("CloudinarySettings"));
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<PresenceTracker>();
 
@@ -42,7 +41,8 @@ builder.Services.AddIdentityCore<AppUser>(opt =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        var tokenKey = builder.Configuration["TokenKey"] ?? throw new Exception("Token not found - program.cs");
+        var tokenKey = builder.Configuration["TokenKey"]
+             ?? throw new Exception("Token key not found - Program.cs");
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,

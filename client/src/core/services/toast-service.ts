@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ToastService {
-  private router = inject(Router)
+  private router = inject(Router);
   
   constructor() {
     this.createToastContainer();

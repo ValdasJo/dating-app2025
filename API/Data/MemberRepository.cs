@@ -27,12 +27,6 @@ public class MemberRepository(AppDbContext context) : IMemberRepository
 
         query = query.Where(x => x.Id != memberParams.CurrentMemberId);
 
-        query = memberParams.OrderBy switch
-        {
-            "created" => query.OrderByDescending(x => x.Created),
-            _ => query.OrderByDescending(x => x.LastActive)
-        };
-
         if (memberParams.Gender != null)
         {
             query = query.Where(x => x.Gender == memberParams.Gender);
@@ -43,7 +37,14 @@ public class MemberRepository(AppDbContext context) : IMemberRepository
 
         query = query.Where(x => x.DateOfBirth >= minDob && x.DateOfBirth <= maxDob);
 
-        return await PaginationHelper.CreateAsync(query, memberParams.PageNumber, memberParams.PageSize);
+        query = memberParams.OrderBy switch
+        {
+            "created" => query.OrderByDescending(x => x.Created),
+            _ => query.OrderByDescending(x => x.LastActive)
+        };
+
+        return await PaginationHelper.CreateAsync(query, 
+            memberParams.PageNumber, memberParams.PageSize);
     }
 
     public async Task<IReadOnlyList<Photo>> GetPhotosForMemberAsync(string memberId)
@@ -52,11 +53,6 @@ public class MemberRepository(AppDbContext context) : IMemberRepository
         .Where(x => x.Id == memberId)
         .SelectMany(x => x.Photos)
         .ToListAsync();
-    }
-
-    public async Task<bool> SaveAllAsync()
-    {
-        return await context.SaveChangesAsync() > 0;
     }
 
     public void Update(Member member)

@@ -7,7 +7,7 @@ namespace API.Extensions;
 
 public static class MessageExtensions
 {
-    public static MessageDto toDto(this Message message)
+    public static MessageDto ToDto(this Message message)
     {
         return new MessageDto
         {

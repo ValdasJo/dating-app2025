@@ -11,13 +11,14 @@
                 [class.avatar-online]="presenceService.onlineUsers()
                     .includes(message.senderId || message.recipientId)">
                 <div class="w-10 rounded-full">
-                    <img alt="Image of user"
+                    <img 
+                        alt="image of user"
                         [src]="message.senderImageUrl || '/user.png'" />
                 </div>
             </div>
             <div class="chat-header">
                 {{message.senderDisplayName}}
-                <time class="text-xs opacity-50">{{message.messageSent | date : 'short'}}</time>
+                <time class="text-xs opacity-50">{{message.messageSent | date: 'short'}}</time>
             </div>
             <div class="chat-bubble">{{message.content}}</div>
             @if (message.currentUserSender && message.dateRead) {

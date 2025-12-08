@@ -9,6 +9,6 @@ public class AppUser : IdentityUser
     public string? RefreshToken { get; set; }
     public DateTime? RefreshTokenExpiry { get; set; }
 
-    // nav prop
+    // Nav property
     public Member Member { get; set; } = null!;
 }

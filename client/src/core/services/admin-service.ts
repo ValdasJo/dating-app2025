@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../../types/user';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AdminService {
   baseUrl = environment.apiUrl;
@@ -14,8 +14,8 @@ export class AdminService {
     return this.http.get<User[]>(this.baseUrl + 'admin/users-with-roles');
   }
 
-  updateUserRoles(userid: string, roles: string[]) {
+  updateUserRoles(userId: string, roles: string[]) {
     return this.http.post<string[]>(this.baseUrl + 'admin/edit-roles/'
-        + userid + '?roles=' + roles, {})
+        + userId + '?roles=' + roles, {})
   }
 }

@@ -20,10 +20,10 @@ export class MemberList implements OnInit {
   private updatedParams = new MemberParams();
 
   constructor() {
-    const filters = localStorage.getItem('filters')
+    const filters = localStorage.getItem('filters');
     if (filters) {
       this.memberParams = JSON.parse(filters);
-      this.updatedParams = JSON.parse(filters);
+      this.updatedParams = JSON.parse(filters)
     }
   }
 
@@ -34,9 +34,9 @@ export class MemberList implements OnInit {
   loadMembers() {
     this.memberService.getMembers(this.memberParams).subscribe({
       next: result => {
-        this.paginatedMembers.set(result);
+        this.paginatedMembers.set(result)
       }
-    });
+    })
   }
 
   onPageChange(event: {pageNumber: number, pageSize: number}) {
@@ -50,7 +50,7 @@ export class MemberList implements OnInit {
   }
 
   onClose() {
-    console.log('Modal closed');
+    console.log('Modal closed')
   }
 
   onFilterChange(data: MemberParams) {
@@ -73,7 +73,7 @@ export class MemberList implements OnInit {
     if (this.updatedParams.gender) {
       filters.push(this.updatedParams.gender + 's')
     } else {
-      filters.push('Males', 'Females');
+      filters.push('Males, Females');
     }
 
     if (this.updatedParams.minAge !== defaultParams.minAge 

@@ -35,7 +35,7 @@ export class Register {
       gender: ['male', Validators.required],
       dateOfBirth: ['', Validators.required],
       city: ['', Validators.required],
-      country: ['', Validators.required]
+      country: ['', Validators.required],
     })
 
     this.credentialsForm.controls['password'].valueChanges.subscribe(() => {
@@ -60,7 +60,7 @@ export class Register {
   }
 
   prevStep() {
-    this.currentStep.update(prevStep => prevStep - 1)
+    this.currentStep.update(prevStep => prevStep - 1);
   }
 
   getMaxDate() {
@@ -79,7 +79,7 @@ export class Register {
         },
         error: error => {
           console.log(error);
-          this.validationErrors.set(error);
+          this.validationErrors.set(error)
         }
       })
     }

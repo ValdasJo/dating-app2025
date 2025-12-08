@@ -7,7 +7,7 @@ import { AccountService } from './account-service';
 import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@microsoft/signalr';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class MessageService {
   private baseUrl = environment.apiUrl;
@@ -34,17 +34,17 @@ export class MessageService {
           ...message,
           currentUserSender: message.senderId !== otherUserId
         })))
-    })
+    });
 
-    this.hubConnection.on('NewMessage', message => {
+    this.hubConnection.on('NewMessage', (message: Message) => {
       message.currentUserSender = message.senderId === currentUser.id;
-      this.messageThread.update(messages => [...messages, message]);
-    })
+      this.messageThread.update(messages => [...messages, message])
+    });
   }
 
   stopHubConnection() {
     if (this.hubConnection?.state === HubConnectionState.Connected) {
-      this.hubConnection.stop().catch(error => console.log(error));
+      this.hubConnection.stop().catch(error => console.log(error))
     }
   }
 
@@ -55,7 +55,7 @@ export class MessageService {
     params = params.append('pageSize', pageSize);
     params = params.append('container', container);
 
-    return this.http.get<PaginatedResult<Message>>(this.baseUrl + 'messages', {params})
+    return this.http.get<PaginatedResult<Message>>(this.baseUrl + 'messages', {params});
   }
 
   getMessageThread(memberId: string) {

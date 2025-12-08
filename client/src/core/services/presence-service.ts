@@ -6,7 +6,7 @@ import { HubConnection, HubConnectionBuilder, HubConnectionState } from '@micros
 import { Message } from '../../types/message';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class PresenceService {
   private hubUrl = environment.hubUrl;
@@ -31,14 +31,15 @@ export class PresenceService {
 
     this.hubConnection.on('UserOffline', userId => {
       this.onlineUsers.update(users => users.filter(x => x !== userId))
-    })
+    });
 
     this.hubConnection.on('GetOnlineUsers', userIds => {
       this.onlineUsers.set(userIds);
-    })
+    });
 
     this.hubConnection.on('NewMessageReceived', (message: Message) => {
-      this.toast.info(message.senderDisplayName + ' has sent you a new message', 10000, message.senderImageUrl, `/members/${message.senderId}/messages`);
+      this.toast.info(message.senderDisplayName + ' has sent you a new message', 
+        10000, message.senderImageUrl, `/members/${message.senderId}/messages`);
     })
   }
 

@@ -12,8 +12,8 @@ export class TextInput implements ControlValueAccessor {
   type = input<string>('text');
   maxDate = input<string>('');
 
-  constructor(@Self() public ngCongrol: NgControl) {
-    this.ngCongrol.valueAccessor = this;
+  constructor(@Self() public ngControl: NgControl) {
+    this.ngControl.valueAccessor = this;
   }
 
   writeValue(obj: any): void {
@@ -24,7 +24,7 @@ export class TextInput implements ControlValueAccessor {
   }
 
   get control(): FormControl {
-    return this.ngCongrol.control as FormControl;
+    return this.ngControl.control as FormControl
   }
 
 }
